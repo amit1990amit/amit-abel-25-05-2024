@@ -6,6 +6,5 @@ const ErrorMessage = props => {
   return (
     <p> {loginError} </p>
   )
-
 }
-export default ErrorMessage
+export default React.memo(ErrorMessage)

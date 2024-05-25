@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/client'
 const initialState = {
     clientName: null,
     loginError: null,
+    isLoggedIn: false,
 }
 
 const clientReducer = (state = initialState, action) => {
@@ -12,11 +13,13 @@ const clientReducer = (state = initialState, action) => {
                 ...state,
                 clientName: action.clientName, 
                 loginError: null,
+                isLoggedIn: true,
             }
         case actionTypes.SET_LOGIN_ERROR:
             return{
                 ...state,
                 loginError: action.error, 
+                isLoggedIn: false
             }
         default:
             return state

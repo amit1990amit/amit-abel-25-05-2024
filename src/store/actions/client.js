@@ -7,9 +7,8 @@ export const setClient = (clientName) => ({
 })
 
 export const setLoginError = (error) => {
-  console.log('error', error)
   return {
   type: SET_LOGIN_ERROR,
   error: error,
-}
+  }
 }
