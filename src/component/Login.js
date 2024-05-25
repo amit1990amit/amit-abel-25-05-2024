@@ -12,9 +12,9 @@ const Login = ( props ) => {
   }
 
   return !isLoggedIn ?(
-    <form onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
       <p>Please Login</p>
-      <div>
+      <div className="input-container">
         <input
           type="text"
           value={clientName}

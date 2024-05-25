@@ -4,6 +4,7 @@ import Login from '../component/Login'
 import Score from '../component/Score'
 import ErrorMessage from '../component/ErrorMessage'
 import Loader from "../component/Loader"
+import GameContainer from '../component/GameContainer'
 import simulateConnection from '../mediator-service/WebSocketHandler'
 import {
   setClient,
@@ -52,7 +53,8 @@ const HomePage = props => {
       <Login handleLogin={handleLogin} />
       {isLoading && <Loader />}
       <ErrorMessage/>
-      {!isLoading  && <Score />}
+      {!isLoading  && <GameContainer />}
+      {/* {!isLoading  && <Score />} */}
     </div>
   )
 }
