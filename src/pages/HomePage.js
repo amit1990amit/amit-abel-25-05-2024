@@ -1,35 +1,48 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
+import { useDispatch } from "react-redux"
 import Login from '../component/Login'
 import Score from '../component/Score'
+import ErrorMessage from '../component/ErrorMessage'
 import simulateConnection from '../mediator-service/WebSocketHandler'
+import {
+  setClient,
+  setScore,
+  setLoginError,
+} from '../store/actions'
 
 
 const HomePage = props => {
-  const [currentScore, setCurrentScore] = useState(null)
-  const [prevScore, setPrevScore] = useState(null)
-  const handleLogin = (name) => {
-    console.log(`login client: ${name}`)
-    simulateConnection(name)
-  }
-
+  const dispatch = useDispatch()
+  
   useEffect(() => {
     const handleScoreUpdate = (event) => {
       const score  = event.detail
-      setPrevScore(currentScore)
-      setCurrentScore(score)
-
+      dispatch(setScore(score))
     }
-    window.addEventListener('score-update', handleScoreUpdate);
 
+    const handleError = (event) => {
+      dispatch(setLoginError(event.detail.error))
+    }
+
+    window.addEventListener('score-update', handleScoreUpdate);
+    window.addEventListener('error', handleError)
+    
     return () => {
-      window.removeEventListener('score-update', handleScoreUpdate);
+      window.removeEventListener('score-update', handleScoreUpdate)
+      window.removeEventListener('error', handleError)
     }
   }, [])
+  
+  const handleLogin = (name) => {
+    dispatch(setClient(name))
+    simulateConnection(name)
+  }
 
   return (
     <div>
       <Login handleLogin={handleLogin} />
-      {currentScore && <Score currentScore={currentScore} prevScore={prevScore}/>}
+      <ErrorMessage/>
+      <Score />
     </div>
   )
 }
