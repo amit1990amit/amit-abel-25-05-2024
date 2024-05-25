@@ -1,7 +1,9 @@
 import React, { useState } from "react"
+import { useSelector } from "react-redux"
 
 const Login = ( props ) => {
   const { handleLogin } = props
+  const isLoggedIn = useSelector(state => state.client.isLoggedIn)
   const [clientName, setClientName] = useState('')
 
   const handleSubmit = (e) => {
@@ -9,7 +11,7 @@ const Login = ( props ) => {
     handleLogin(clientName)
   }
 
-  return (
+  return !isLoggedIn ?(
     <form onSubmit={handleSubmit}>
       <p>Please Login</p>
       <div>
@@ -22,6 +24,8 @@ const Login = ( props ) => {
         <button type="submit">Enter</button>
       </div>
     </form>
+  ) : (
+    <></>
   )
 }
 

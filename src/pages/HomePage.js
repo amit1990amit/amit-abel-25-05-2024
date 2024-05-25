@@ -18,7 +18,6 @@ import {
 
 const HomePage = props => {
   const dispatch = useDispatch()
-  const isLoggedIn = useSelector(state => state.client.isLoggedIn)
   const [isLoading, setIsLoading] = useState(false)
   
   useEffect(() => {
@@ -50,10 +49,10 @@ const HomePage = props => {
 
   return (
     <div>
-      {!isLoggedIn && <Login handleLogin={handleLogin} />}
+      <Login handleLogin={handleLogin} />
       {isLoading && <Loader />}
       <ErrorMessage/>
-      {isLoggedIn && !isLoading  && <Score />}
+      {!isLoading  && <Score />}
     </div>
   )
 }
