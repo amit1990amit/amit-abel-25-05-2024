@@ -4,6 +4,7 @@ import { connectClient, generateNewScore, dispatchCustomEvent } from './utils'
 import {
   SCORE_UPDATE,
   ERROR,
+  CUSTOM_WEBSOCKET_CONNECTION
 } from '../consts'
 
 class MediatorService {
@@ -11,7 +12,7 @@ class MediatorService {
   private scoreInterval?: number
 
   constructor() {
-    window.addEventListener('custom-websocket-connection', (event: any) => this.handleConnection(event))
+    window.addEventListener(CUSTOM_WEBSOCKET_CONNECTION, (event: any) => this.handleConnection(event))
   }
 
   private async handleConnection(event: CustomEvent): Promise<void> { 
