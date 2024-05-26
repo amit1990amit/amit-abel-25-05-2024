@@ -1,0 +1,16 @@
+.score-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin: 40px;
+  font-size: 1.5em;
+}
+
+.score-container.green {
+  color: green;
+}
+
+.score-container.red {
+  color: red;
+}

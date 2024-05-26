@@ -5,8 +5,8 @@ const Loader = props => {
   return (
     <div className="loader">
     <Oval
-      height={40}
-      width={40}
+      height={60}
+      width={60}
       color="blue"
       ariaLabel="loading"
     />

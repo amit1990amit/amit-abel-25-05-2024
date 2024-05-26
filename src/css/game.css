@@ -1,0 +1,21 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.game-title-container {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+  border: 4px solid #4ca8af;
+  width: 500px;
+  height: 400px;
+}
+
+.game-title-container p {
+  color: #4ca8af;
+  font-weight: bold;
+  text-align: center;
+}
